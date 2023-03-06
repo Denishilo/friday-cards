@@ -1,13 +1,15 @@
-import { CardsType } from "../../../feature/cards/cardsAPI";
+import { CardsType } from "../../../components/cards/cardsAPI";
 
 export const generateRandomQuestion = (cards: CardsType[]) => {
-    const sum = cards?.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
-    const rand = Math.random() * sum;
-    const res = cards.reduce((acc: { sum: number, id: number}, card, i) => {
-            const newSum = acc.sum + (6 - card.grade) * (6 - card.grade);
-            return {sum: newSum, id: newSum < rand ? i : acc.id}
-        }
-        , {sum: 0, id: -1});
+  const sum = cards?.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
+  const rand = Math.random() * sum;
+  const res = cards.reduce(
+    (acc: { sum: number; id: number }, card, i) => {
+      const newSum = acc.sum + (6 - card.grade) * (6 - card.grade);
+      return { sum: newSum, id: newSum < rand ? i : acc.id };
+    },
+    { sum: 0, id: -1 }
+  );
 
-    return Math.abs(res.id) ;
-}
+  return Math.abs(res.id);
+};

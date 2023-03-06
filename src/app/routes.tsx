@@ -1,22 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import PATH from "../common/constans/path/path";
-import { LoginRegistration } from "../feature/loginRegistration/loginRegistration";
-import { Profile } from "../feature/profile/profile";
-import { CheckEmail } from "../feature/passwordRecovery/checkEmail";
-import { CreatePassword } from "../feature/passwordRecovery/createPassword";
+import { LoginRegistration } from "../components/loginRegistration/loginRegistration";
+import { Profile } from "../components/profile/profile";
+import { CheckEmail } from "../components/passwordRecovery/checkEmail";
+import { CreatePassword } from "../components/passwordRecovery/createPassword";
 import React from "react";
-import { ForgotPassword } from "../feature/passwordRecovery/forgotPassword";
-import { Packs } from "../feature/packs/packs";
-import { Cards } from "../feature/cards/cards";
-import { EmptyPageField } from "../feature/packs/emptyPageField";
-import { LearnCardPack } from "../feature/cards/learnCardPack";
-import {PrivateRoutes} from "./privateRoutes";
-import AppNotFoundPage from "../common/notFoundPage/appNotFoundPage";
+import { ForgotPassword } from "../components/passwordRecovery/forgotPassword";
+import { Packs } from "../components/packs/packs";
+import { Cards } from "../components/cards/cards";
+import { EmptyPageField } from "../components/packs/emptyPageField";
+import { LearnCardPack } from "../components/cards/learnCards/learnCardPack";
+import AppNotFoundPage from "../common/components/notFoundPage/appNotFoundPage";
 export const Pages = () => {
   return (
     <Routes>
       <Route path={"/"} element={<Packs />}></Route>
-      <Route path={"*"} element={<AppNotFoundPage/>}></Route>
+      <Route path={"*"} element={<AppNotFoundPage />}></Route>
       <Route path={PATH.LOGIN} element={<LoginRegistration />}></Route>
       <Route path={PATH.PROFILE} element={<Profile />}></Route>
       <Route path={PATH.FORGOT_PASSWORD} element={<ForgotPassword />}></Route>

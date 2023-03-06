@@ -1,0 +1,10 @@
+.textWithButton {
+    padding: 0 136px;
+    margin-top: 55px;
+    text-align: center;
+}
+
+.button {
+    width: 300px;
+    margin: 0 auto;
+}

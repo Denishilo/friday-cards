@@ -47,10 +47,10 @@ export type SetAppErrorType = ReturnType<typeof setAppError>;
 export type AppActionCreatorsType =
   | ReturnType<typeof toggleIsSignUp>
   | ReturnType<typeof setAppStatus>
-  | SetAppErrorType
   | ReturnType<typeof setAuth>
   | ReturnType<typeof setCurrentPackId>
-  | ReturnType<typeof setInitialized>;
+  | ReturnType<typeof setInitialized>
+  | SetAppErrorType;
 
 export const AppActions = {
   ToggleIsSignUp: "TOGGLE-IS-SIGN-UP",

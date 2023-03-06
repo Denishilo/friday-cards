@@ -1,0 +1,56 @@
+.wrapper {
+  padding: 0 136px;
+  margin-top: 55px;
+  margin-bottom: 85px;
+  align-content: space-between;
+}
+
+.title {
+  text-align: center;
+  font-size: 27px;
+}
+
+.button {
+  width: 175px;
+  height: 36px;
+}
+
+.headCell {
+  background-color: #EFEFEF;
+}
+
+.headCellName {
+  width: 320px;
+}
+
+.headCellAnotherSort {
+  width: 134px;
+}
+
+.headCellAnother {
+  min-width: 76px;
+}
+
+.titleEmptyPage{
+  margin-bottom:86px ;
+}
+.emptyPageWrapper{
+  margin-top: 36px;
+  padding: 0 136px;
+}
+.textEmptyContainer{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap:32px;
+}
+.emptyPageButton{
+  align-self: center;
+  width:171px;
+}
+
+.deckCover {
+  width: 50px;
+  height: 50px
+}
