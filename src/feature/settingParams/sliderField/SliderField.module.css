@@ -6,7 +6,8 @@
 
 .numberWrapper {
     display: flex;
-    min-width: 38px;
+    /*min-width: 38px;*/
+    width: 38px;
     align-items: center;
     justify-content: center;
     height: 38px;
@@ -17,5 +18,7 @@
 
 .spanNumber {
     min-width: 10px;
-    height: 20px;
+    height: 40px;
+    width: 40px;
+    border: none;
 }
