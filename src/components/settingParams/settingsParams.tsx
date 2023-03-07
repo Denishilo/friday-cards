@@ -8,7 +8,7 @@ import { memo } from "react";
 export const SettingsParams = memo(() => {
   return (
     <div className={s.wrapper}>
-      <SearchField />
+      <SearchField type={"packs"} />
       <GroupButtons />
       <SliderField />
       <ClearButton />

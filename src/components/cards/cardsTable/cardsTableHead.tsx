@@ -39,14 +39,12 @@ export const CardsTableHead = ({ orderRef, urlParams, orderBy, setOrderBy }: Sor
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="none"></TableCell>
         {headCellsCards.map((headCell) =>
           headCell.id === "grade" || headCell.id === "lastUpdated" ? (
             <TableCell
               key={headCell.id}
               sortDirection={orderBy === headCell.id ? orderRef.current : false}
               className={s.headCell}
-              sx={{ paddingRight: "36px", textAlign: "left" }}
             >
               <TableSortLabel
                 active={orderBy === headCell.id}

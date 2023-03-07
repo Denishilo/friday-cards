@@ -21,43 +21,40 @@ export const PacksTableBody = ({ rows }: PropsType) => {
   };
 
   const errorHandler = () => {
-    return <img src={BrokenImage} className={s.deckCover} />;
+    return <img src={BrokenImage} className={s.deckCover} alt={"cover"} />;
   };
   return (
     <TableBody>
       {rows.map((row, index) => {
         const labelId = `enhanced-table-checkbox-${index}`;
         return (
-          <TableRow key={row.id}>
+          <TableRow key={row.id} sx={{}}>
             <TableCell align={"center"} padding={"none"} />
-            <TableCell sx={{ maxWidth: 252 }} align="left">
+            <TableCell onClick={() => goToCardsList(row.id)} sx={{ cursor: "pointer" }} align="left">
               {row.deckCover ? (
-                <img src={row.deckCover} className={s.deckCover} onError={errorHandler} />
+                <img src={row.deckCover} className={s.deckCover} onError={errorHandler} alt={"cover"} />
               ) : (
-                <img src={EmptyImage} className={s.deckCover} />
+                <img src={EmptyImage} className={s.deckCover} alt={"cover"} />
               )}
             </TableCell>
             <TableCell
               onClick={() => goToCardsList(row.id)}
-              component="th"
               id={labelId}
               scope="row"
-              sx={{ paddingRight: "36px", textAlign: "left", cursor: "pointer", wordWrap: "break-word", maxWidth: 252 }}
+              sx={{
+                cursor: "pointer",
+                wordWrap: "break-word",
+                maxWidth: 252,
+              }}
             >
-              {row.name}
+              <div className={s.namePack}>{row.name}</div>
             </TableCell>
-            <TableCell sx={{ maxWidth: 252 }} align="left">
-              {row.cards}
-            </TableCell>
-            <TableCell sx={{ maxWidth: 252 }} align="left">
-              {row.lastUpdated}
-            </TableCell>
-            <TableCell sx={{ maxWidth: 252 }} align="left">
+            <TableCell align="left">{row.cards}</TableCell>
+            <TableCell align="left">{row.lastUpdated}</TableCell>
+            <TableCell sx={{ maxWidth: 200 }} align="left">
               {row.createdBy}
             </TableCell>
-            <TableCell sx={{ maxWidth: 252 }} align="left">
-              {row.actions}
-            </TableCell>
+            <TableCell align="left">{row.actions}</TableCell>
           </TableRow>
         );
       })}

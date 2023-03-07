@@ -2,7 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import s from "./settingParams.module.css";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/store";
 import { setSearchFieldEmpty } from "../packs/packsReducer";
 import { useSelector } from "react-redux";
@@ -42,7 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
 }));
 
-export const SearchField = () => {
+export const SearchField: FC<PropsType> = ({ type }) => {
   const dispatch = useAppDispatch();
   const isClearField = useSelector(selectorIsClearSearchField);
   const [isClear, setClear] = useState<boolean>(false);
@@ -59,8 +59,13 @@ export const SearchField = () => {
   }, [isClearField]);
 
   useEffect(() => {
+    let params;
     if (isClear) {
-      const params = { ...URLParams, packName: debouncedValue };
+      if (type === "packs") {
+        params = { ...URLParams, packName: debouncedValue };
+      } else {
+        params = { ...URLParams, cardQuestion: debouncedValue };
+      }
       setSearchParams(params);
       setClear(false);
     }
@@ -86,4 +91,9 @@ export const SearchField = () => {
       </Search>
     </div>
   );
+};
+//////////////// types //////////////////
+
+type PropsType = {
+  type: "cards" | "packs";
 };

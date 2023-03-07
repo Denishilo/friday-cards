@@ -15,25 +15,24 @@ export const CardsTableBody = ({ rows }: PropsType) => {
         const labelId = `enhanced-table-checkbox-${index}`;
         return (
           <TableRow key={index}>
-            <TableCell align={"center"} padding={"none"} />
             <TableCell
-              component="th"
               id={labelId}
               scope="row"
-              sx={{ paddingRight: "36px", textAlign: "left", maxWidth: 252, flexWrap: "wrap", wordWrap: "break-word" }}
+              sx={{ paddingRight: "36px", textAlign: "left", width: "30%", flexWrap: "wrap", wordWrap: "break-word" }}
             >
-              <img src={row.questionImg || undefined} />
-              {row.questionImg ? null : row.question}
+              <img className={s.cardsAnswerQuestionImg} src={row.questionImg || undefined} alt={"pic"} />
+              <div className={s.cardsField}>{row.questionImg ? null : row.question}</div>
             </TableCell>
-            <TableCell style={{ maxWidth: 252, flexWrap: "wrap", wordWrap: "break-word" }} align="left">
-              <img src={row.answerImg || undefined} />
-              {row.answerImg ? null : row.answer}
+
+            <TableCell style={{ width: "30%", flexWrap: "wrap", wordWrap: "break-word" }} align="left">
+              <img className={s.cardsAnswerQuestionImg} src={row.answerImg || undefined} alt={"pic"} />
+              <div className={s.cardsField}>{row.answerImg ? null : row.answer}</div>
             </TableCell>
-            <TableCell style={{ maxWidth: 252, flexWrap: "wrap" }} align="left">
+            <TableCell style={{ width: "18%", flexWrap: "wrap" }} align="left">
               {row.lastUpdated}
             </TableCell>
-            <TableCell style={{ maxWidth: 252, flexWrap: "wrap" }} align="left">
-              <Box sx={{ width: 170, display: "flex", flexWrap: "wrap" }}>
+            <TableCell style={{ width: "22%", flexWrap: "wrap" }} align="left">
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <Rating
                   readOnly
                   name="text-feedback"

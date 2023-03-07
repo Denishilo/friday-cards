@@ -11,10 +11,10 @@ import { PacksTablePagination } from "./packsTablePagination";
 import { Paper } from "@mui/material";
 import { selectAppStatus } from "../../../app/appSelectors";
 import { SkeletonLoader } from "../../../common/components/loaders/skeletonLoader/skeletonLoader";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { selectorLogin } from "../../loginRegistration/authSelectors";
 import PATH from "../../../common/constans/path/path";
-import { EmptyPageField } from "../emptyPageField";
+import { NotFoundPage } from "../notFoundPage";
 
 export const PacksTable = () => {
   const dispatch = useAppDispatch();
@@ -23,17 +23,19 @@ export const PacksTable = () => {
   const isPacksEmpty = packs.cardPacks.length === 0;
   const orderRef = useRef<Order>("asc");
   const [searchParams] = useSearchParams();
-
+  const navigate = useNavigate();
   const URLParams = Object.fromEntries(searchParams);
+  const searchPackName = searchParams.get("packName");
   const isLogin = useSelector(selectorLogin);
   const [orderBy, setOrderBy] = React.useState<string>("cards");
+
   useEffect(() => {
     if (isLogin) {
       dispatch(setSearchFieldEmpty(false));
       console.log("URLParams", URLParams);
       dispatch(fetchPacksTC(URLParams));
     }
-  }, [dispatch, searchParams]);
+  }, [dispatch, searchParams, isPacksEmpty]);
 
   function createData(
     deckCover: string | undefined,
@@ -64,6 +66,11 @@ export const PacksTable = () => {
       />
     );
   });
+
+  const returnPacksHandler = () => {
+    navigate(PATH.PACKS);
+  };
+
   if (!isLogin) {
     return <Navigate to={PATH.LOGIN} />;
   }
@@ -73,8 +80,8 @@ export const PacksTable = () => {
         <SkeletonLoader count={5} height={"60px"} />
       ) : (
         <div>
-          {isPacksEmpty ? (
-            <EmptyPageField />
+          {isPacksEmpty && searchPackName ? (
+            <NotFoundPage type={"Packs"} callback={returnPacksHandler} />
           ) : (
             <Paper>
               <Table aria-labelledby="tableTitle" size={"medium"}>

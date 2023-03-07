@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   max-width: 252px;
+  padding-left: 15px;
 }
 .title {
   text-align: center;
@@ -28,4 +29,18 @@
 
 .headCell {
   background-color: #EFEFEF;
+}
+
+.cardsAnswerQuestionImg{
+  max-width: 150px;
+  max-height: 150px;
+}
+.packsHead{
+  display: flex;
+  justify-content: space-between;
+}
+.cardsField{
+  max-height: 120px;
+  max-width: 270px;
+  overflow: hidden;
 }

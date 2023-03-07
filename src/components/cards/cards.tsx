@@ -45,7 +45,7 @@ export const Cards = () => {
         <TitleWithButton title={packName} nameButton={resNameButton} callback={addLearnHandler} />
       )}
       <div className={s.search}>
-        <SearchField />
+        <SearchField type={"cards"} />
       </div>
       <AddNewCardModal active={activeAddNewCard} setActive={setActiveAddNewCard} pack_id={packId} />
       <CardsList />
