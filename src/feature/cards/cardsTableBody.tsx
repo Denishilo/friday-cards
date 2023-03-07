@@ -21,11 +21,11 @@ export const CardsTableBody = ({rows}: PropsType) => {
                             id={labelId}
                             scope="row"
                             sx={{paddingRight: "36px", textAlign: "left", maxWidth: 252,flexWrap: 'wrap',wordWrap:'break-word'}}>
-                            <img src={row.questionImg || undefined}/>
+                            <img src={row.questionImg || undefined} className={s.questionImg}/>
                             {row.questionImg ? null : row.question}
                         </TableCell>
                         <TableCell style={{ maxWidth: 252,flexWrap: 'wrap',wordWrap:'break-word'}} align="left">
-                            <img src={row.answerImg || undefined}/>
+                            <img src={row.answerImg || undefined} className={s.answerImg}/>
                             {row.answerImg ? null : row.answer}
                         </TableCell>
                         <TableCell style={{maxWidth: 252, flexWrap:'wrap'}} align="left">{row.lastUpdated}</TableCell>

@@ -36,3 +36,9 @@
     height: 36px!important;
     margin-left: -13px;
 }
+
+.question,
+.answer {
+    overflow: auto;
+    word-wrap: anywhere;
+}

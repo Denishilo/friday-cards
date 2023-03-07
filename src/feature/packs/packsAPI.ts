@@ -70,5 +70,7 @@ export type EditCardPackRequestType = {
     _id: string;
     name: string;
     deckCover?: string;
+    private?: boolean;
+    user_id?: string
   };
 };

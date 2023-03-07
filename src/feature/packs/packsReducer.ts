@@ -82,7 +82,11 @@ export const editPackTC = (cardsPack: EditCardPackRequestType) => async (dispatc
   dispatch(setAppStatus("loading"));
   try {
     await packsAPI.editPack(cardsPack);
-    await dispatch(fetchPacksTC({}));
+    // await dispatch(fetchPacksTC({}));
+    const params = {
+        user_id: cardsPack.cardsPack.user_id
+      }
+    await dispatch(fetchPacksTC(params));
   } catch (e) {
     const err = e as Error | AxiosError<{ error: string }>;
     errorUtils(err, dispatch);
@@ -90,7 +94,16 @@ export const editPackTC = (cardsPack: EditCardPackRequestType) => async (dispatc
     dispatch(setAppStatus("succeeded"));
   }
 };
-
+// export type PackParamsType = {
+//   packName?: string;
+//   min?: number;
+//   max?: number;
+//   sortPacks?: string;
+//   page?: number;
+//   pageCount?: number;
+//   user_id?: string;
+//   block?: boolean;
+// };
 /////////// types /////////////
 export type PacksResponseType = {
   cardPacks: Array<PackResponseType>;

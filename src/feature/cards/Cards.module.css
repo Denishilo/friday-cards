@@ -29,3 +29,11 @@
 .headCell {
   background-color: #EFEFEF;
 }
+
+.questionImg {
+  max-width: 250px;
+}
+
+.answerImg {
+  max-width: 250px;
+}

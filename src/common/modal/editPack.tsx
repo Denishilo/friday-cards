@@ -4,7 +4,7 @@ import s from "./actionModal.module.css";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { addPackTC, editPackTC } from "../../feature/packs/packsReducer";
-import { useAppDispatch } from "../../app/store";
+import {RootReducerType, useAppDispatch} from "../../app/store";
 import { ModalButtons } from "./modalButtons";
 //import { ActivateModalPropsType } from "../../feature/packs/packs";
 import { useParams } from "react-router-dom";
@@ -12,17 +12,24 @@ import { useParams } from "react-router-dom";
 import AddImage from "./../../img/AddImage.png";
 import { convertFileToBase64 } from "../utils/convertFileToBase64";
 import { ActivateModalPropsType } from "./addNewPackModal";
+import {useSelector} from "react-redux";
+import {selectorPacks} from "../../feature/packs/packsSelectors";
 
 export const EditPack = (props: EditPackPropsType) => {
   const { id } = useParams();
+  const packs = useSelector(selectorPacks)
   const dispatch = useAppDispatch();
   const [packName, setPackName] = useState<string | undefined>(props.pack_name);
   const [disabled, setDisabled] = useState(false);
   const [addPackName, setAddPackName] = useState<string>("");
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(props.privatePack);
   const [error, setError] = useState<null | string>(null);
   const [imageDeckCover, setImageDeckCover] = useState(AddImage);
 
+  console.log("editPack id", id)
+  console.log("editPack packId", props.pack_id)
+  console.log("editPack private", props.privatePack)
   const handleChange = () => {
     setChecked(!checked);
   };
@@ -48,12 +55,14 @@ export const EditPack = (props: EditPackPropsType) => {
     }
   };
 
-  const saveChangePackName = async () => {
+  const saveChangePack = async () => {
     if (props.pack_id && packName && packName.trim() !== "") {
       setError("");
       setDisabled(true);
-
-      //await dispatch(editPackTC(props.pack_id, packName, imageDeckCover));
+      console.log("saveChangePackName")
+      // await dispatch(editPackTC(props.pack_id, packName, imageDeckCover));
+      const changePack = {cardsPack: { _id: props.pack_id, name: packName, deckCover: imageDeckCover, private: checked, user_id: props.user_id}}
+      await dispatch(editPackTC(changePack));
       setDisabled(false);
       if (id) {
         //await dispatch(getAllUserCards(id));
@@ -84,6 +93,7 @@ export const EditPack = (props: EditPackPropsType) => {
   useEffect(() => {
     if (props.deckCover) setImageDeckCover(props.deckCover);
   }, [props.deckCover]);
+
   return (
     <div className={s.editPack}>
       <div className={s.deckCover}>
@@ -117,7 +127,7 @@ export const EditPack = (props: EditPackPropsType) => {
         disabled={disabled}
         setActive={props.setActive}
         // changeName={() => changeName}
-        onKeyDownSaveChangeNameHandler={props.pack_id ? saveChangePackName : addNewPackName}
+        onKeyDownSaveChangeNameHandler={props.pack_id ? saveChangePack : addNewPackName}
       />
     </div>
   );
@@ -129,6 +139,8 @@ type PropsType = {
   pack_id: string;
   pack_name: string;
   deckCover?: string;
+  privatePack?: boolean;
+  user_id: string
 };
 
 export default {};

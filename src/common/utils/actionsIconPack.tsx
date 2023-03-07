@@ -17,15 +17,16 @@ type ActionsIconPackType = {
   pack_name: string;
   cards_count: number;
   deckCover?: string;
+  privatePack?: boolean
 };
 
-export const ActionsIconPack = ({ user_id, pack_id, pack_name, cards_count, deckCover }: ActionsIconPackType) => {
+export const ActionsIconPack = ({ user_id, pack_id, pack_name, cards_count, deckCover, privatePack }: ActionsIconPackType) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [activeEditPack, setActiveEditPack] = useState(false);
   const [activeDeletePack, setActiveDeletePack] = useState(false);
   const userAuthId = useSelector(selectorIdUser);
-
+  console.log("ActionIconPack private", privatePack)
   const learnPackCallback = () => {
     if (cards_count === 0) {
       navigate(PATH.EMPTY_PACK);
@@ -56,6 +57,8 @@ export const ActionsIconPack = ({ user_id, pack_id, pack_name, cards_count, deck
         pack_id={pack_id}
         pack_name={pack_name}
         deckCover={deckCover}
+        privatePack={privatePack}
+        user_id={user_id}
       />
       <DeletePackModal
         active={activeDeletePack}
