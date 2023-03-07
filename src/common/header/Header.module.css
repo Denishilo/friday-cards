@@ -1,6 +1,6 @@
 .topNav {
   padding: 0 136px;
-  background-color: #FCFCFC;
+  background-color: #e7f0f7;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,9 +19,9 @@
 }
 
 .mainLogo {
-  width:173px;
+  /*width:230px;*/
   cursor: pointer;
-  height:41px;
+  height:60px;
   justify-content: center;
 }
 
