@@ -7,7 +7,7 @@ import { addPackTC, editPackTC } from "../../feature/packs/packsReducer";
 import {RootReducerType, useAppDispatch} from "../../app/store";
 import { ModalButtons } from "./modalButtons";
 //import { ActivateModalPropsType } from "../../feature/packs/packs";
-import { useParams } from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 
 import AddImage from "./../../img/AddImage.png";
 import { convertFileToBase64 } from "../utils/convertFileToBase64";
@@ -18,6 +18,8 @@ import {selectorPacks} from "../../feature/packs/packsSelectors";
 export const EditPack = (props: EditPackPropsType) => {
   const { id } = useParams();
   const packs = useSelector(selectorPacks)
+  const [searchParams] = useSearchParams();
+  const URLParams = Object.fromEntries(searchParams);
   const dispatch = useAppDispatch();
   const [packName, setPackName] = useState<string | undefined>(props.pack_name);
   const [disabled, setDisabled] = useState(false);
@@ -26,7 +28,6 @@ export const EditPack = (props: EditPackPropsType) => {
   const [checked, setChecked] = useState(props.privatePack);
   const [error, setError] = useState<null | string>(null);
   const [imageDeckCover, setImageDeckCover] = useState(AddImage);
-
   console.log("editPack id", id)
   console.log("editPack packId", props.pack_id)
   console.log("editPack private", props.privatePack)
@@ -44,7 +45,7 @@ export const EditPack = (props: EditPackPropsType) => {
   };
 
   const addNewPackName = async () => {
-    const newPack = { cardsPack: { name: addPackName, deckCover: imageDeckCover, private: checked } };
+    const newPack = { cardsPack: { name: addPackName, deckCover: imageDeckCover === AddImage ? null : imageDeckCover, private: checked } };
     if (addPackName.trim() !== "") {
       setDisabled(true);
       await dispatch(addPackTC(newPack));
@@ -56,12 +57,13 @@ export const EditPack = (props: EditPackPropsType) => {
   };
 
   const saveChangePack = async () => {
+    console.log("URLParams change pack", URLParams)
     if (props.pack_id && packName && packName.trim() !== "") {
       setError("");
       setDisabled(true);
       console.log("saveChangePackName")
       // await dispatch(editPackTC(props.pack_id, packName, imageDeckCover));
-      const changePack = {cardsPack: { _id: props.pack_id, name: packName, deckCover: imageDeckCover, private: checked, user_id: props.user_id}}
+      const changePack = {cardsPack: { ...URLParams, _id: props.pack_id, name: packName, deckCover: imageDeckCover === AddImage ? null : imageDeckCover, private: checked, user_id: props.user_id}}
       await dispatch(editPackTC(changePack));
       setDisabled(false);
       if (id) {

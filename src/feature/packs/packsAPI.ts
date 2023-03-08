@@ -31,7 +31,7 @@ export type GetPacksParamsType = {
 export type AddPackParamsType = {
   cardsPack: {
     name?: string;
-    deckCover?: string;
+    deckCover?: string | null;
     private?: boolean;
   };
 };
@@ -69,8 +69,11 @@ export type EditCardPackRequestType = {
   cardsPack: {
     _id: string;
     name: string;
-    deckCover?: string;
+    deckCover?: string | null;
     private?: boolean;
     user_id?: string
+    min?: number
+    max?: number
+    pageCount?: number
   };
 };
