@@ -4,9 +4,13 @@
     gap: 24px;
 }
 
-.numberWrapper {
+.packsNumberInput {
     display: flex;
-    min-width: 38px;
+    width: 38px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
     align-items: center;
     justify-content: center;
     height: 38px;
@@ -15,7 +19,38 @@
     border-radius: 2px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
 .spanNumber {
     min-width: 10px;
-    height: 20px;
+    height: 40px;
+    width: 40px;
+    border: none;
+}
+
+.title{
+    margin-bottom: 14px ;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.sliderBox {
+    width: 155px
+}
+
+.inputWrapper {
+    display: flex;
+    /*min-width: 38px;*/
+    width: 38px;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    height: 38px;
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 2px;
 }

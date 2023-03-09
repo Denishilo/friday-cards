@@ -48,6 +48,7 @@ export const PacksTable = () => {
   }
 
   const rows = packs.cardPacks.map((pack) => {
+    console.log("packsTable", pack.private)
     return createData(
       pack.deckCover,
       pack.name,
@@ -61,6 +62,7 @@ export const PacksTable = () => {
         pack_name={pack.name}
         cards_count={pack.cardsCount}
         deckCover={pack.deckCover}
+        privatePack={pack.private}
       />
     );
   });

@@ -95,7 +95,7 @@ export const LearnCardPack = () => {
           <h2 className={s.title}> Learn {cardsPackName} </h2>
           <Card className={s.card}>
             <CardContent className={s.content}>
-                <Typography paragraph><b>Question:</b>
+                <Typography paragraph className={s.question}><b>Question:</b>
                     {cards ?  cards[currentQuestion].questionImg ?
                         <img className={s.answerImg}
                              src={cards[currentQuestion].questionImg || undefined}/>
@@ -111,7 +111,7 @@ export const LearnCardPack = () => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent className={s.contentAnswer}>
-                  <Typography paragraph><b>Answer:</b>
+                  <Typography paragraph className={s.answer}><b>Answer:</b>
                       {cards ?  cards[currentQuestion].answerImg ?
                           <img className={s.answerImg}
                                src={cards[currentQuestion].answerImg || undefined }

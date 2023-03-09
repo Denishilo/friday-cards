@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import PATH from "../constans/path/path";
 import { selectorAuth } from "../../app/appSelectors";
 import { HeaderDropdown } from "./headerDropdown";
+import learnMyPacksLogo from "./../../img/LearnMyCardsMainLogo.png"
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ export const Header = () => {
     <div className={s.topNav}>
       <img
         className={s.mainLogo}
-        src="https://static.tildacdn.com/tild3064-6361-4562-a539-303563643237/logo-big-blue.png"
+        src={learnMyPacksLogo}
         alt="header_logo"
       />
       <div>

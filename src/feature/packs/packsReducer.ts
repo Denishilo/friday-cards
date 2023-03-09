@@ -65,11 +65,11 @@ export const addPackTC = (newPack: AddPackParamsType) => async (dispatch: AppThu
   }
 };
 
-export const deletePackTC = (packId: string, user_id: string) => async (dispatch: AppThunkDispatch) => {
+export const deletePackTC = (packId: string, user_id: string, pageCount?: number, page?: number, min?: number, max?: number) => async (dispatch: AppThunkDispatch) => {
   dispatch(setAppStatus("loading"));
   try {
     await packsAPI.deletePack(packId);
-    await dispatch(fetchPacksTC({ user_id }));
+    await dispatch(fetchPacksTC({ user_id, pageCount, page, min, max }));
   } catch (e) {
     const err = e as Error | AxiosError<{ error: string }>;
     errorUtils(err, dispatch);
@@ -82,7 +82,8 @@ export const editPackTC = (cardsPack: EditCardPackRequestType) => async (dispatc
   dispatch(setAppStatus("loading"));
   try {
     await packsAPI.editPack(cardsPack);
-    await dispatch(fetchPacksTC({}));
+    const params = { user_id: cardsPack.cardsPack.user_id, min: cardsPack.cardsPack.min, max: cardsPack.cardsPack.max, pageCount: cardsPack.cardsPack.pageCount }
+    await dispatch(fetchPacksTC(params));
   } catch (e) {
     const err = e as Error | AxiosError<{ error: string }>;
     errorUtils(err, dispatch);
@@ -91,7 +92,6 @@ export const editPackTC = (cardsPack: EditCardPackRequestType) => async (dispatc
   }
 };
 
-/////////// types /////////////
 export type PacksResponseType = {
   cardPacks: Array<PackResponseType>;
   page: number;
@@ -119,4 +119,5 @@ export type PackParamsType = {
   user_id?: string;
   block?: boolean;
 };
+
 export type PacksActionCreatorsType = ReturnType<typeof setPacksAC> | ReturnType<typeof setSearchFieldEmpty>;
