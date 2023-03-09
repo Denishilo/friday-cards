@@ -10,13 +10,14 @@ export const ModalButtons = (props: ButtonsPropsType) => {
   const [searchParams] = useSearchParams();
   const userId = searchParams.get("user_id") || "";
   const dispatch = useAppDispatch();
+  const URLParams = Object.fromEntries(searchParams);
 
   const deleteHandler = () => {
     if (props.card_id && props.pack_id && props.mode === "deleteCard") {
       dispatch(deleteCardTC(props.card_id, props.pack_id));
     }
     if (props.pack_id && props.mode === "deletePack") {
-      dispatch(deletePackTC(props.pack_id, userId));
+      dispatch(deletePackTC(props.pack_id, userId, Number(URLParams.pageCount), Number(URLParams.page), Number(URLParams.min), Number(URLParams.max)));
     }
   };
 

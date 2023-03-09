@@ -10,3 +10,29 @@
 .buttonGroup{
     border:none;
 }
+
+.active {
+    border: 1px solid #D9D9D9;
+    color: #FFFFFF;
+    background-color: #366EFF;
+}
+
+.notActive {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.all {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.all.selected {
+    color: #FFFFFF;
+    background-color: #366EFF;
+}
+
+/*.notActive :hover {*/
+/*    color: #000000;*/
+/*    border-color: #366EFF;*/
+/*}*/

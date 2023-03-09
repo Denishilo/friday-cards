@@ -65,11 +65,11 @@ export const addPackTC = (newPack: AddPackParamsType) => async (dispatch: AppThu
   }
 };
 
-export const deletePackTC = (packId: string, user_id: string) => async (dispatch: AppThunkDispatch) => {
+export const deletePackTC = (packId: string, user_id: string, pageCount?: number, page?: number, min?: number, max?: number) => async (dispatch: AppThunkDispatch) => {
   dispatch(setAppStatus("loading"));
   try {
     await packsAPI.deletePack(packId);
-    await dispatch(fetchPacksTC({ user_id }));
+    await dispatch(fetchPacksTC({ user_id, pageCount, page, min, max }));
   } catch (e) {
     const err = e as Error | AxiosError<{ error: string }>;
     errorUtils(err, dispatch);
