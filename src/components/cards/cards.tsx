@@ -1,24 +1,26 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { CardsList } from "./cardsTable/cardsTable";
-import s from "./cards.module.css";
-import { TitleWithButton } from "../../common/components/titleWithButton/titleWithButton";
+import { TitleWithButton } from "common/components/titleWithButton/titleWithButton";
 import { SearchField } from "../settingParams/searchField";
 import { selectorPackName, selectorPackUserId } from "./cardsSelectors";
-import { useSelector } from "react-redux";
-import { ReturnBack } from "../../common/components/returnBack/returnBack";
-import PATH from "../../common/constans/path/path";
-import { useNavigate, useParams } from "react-router-dom";
-import { selectAppStatus, selectorPackId, selectorUserId } from "../../app/appSelectors";
+import { ReturnBack } from "common/components";
+import { PATH } from "common/constans/path/path";
+import { useNavigate } from "react-router-dom";
+import { selectAppStatus, selectorPackId, selectorUserId } from "app/appSelectors";
 import { AddNewCardModal } from "../modal/addNewCardModal";
-import { SkeletonLoader } from "../../common/components/loaders/skeletonLoader/skeletonLoader";
+import { SkeletonLoader } from "common/components";
+import s from "./cards.module.css";
 
 export const Cards = () => {
+  const navigate = useNavigate();
+
   const userAuthId = useSelector(selectorUserId);
   const userPackId = useSelector(selectorPackUserId);
   const packName = useSelector(selectorPackName);
   const packId = useSelector(selectorPackId);
-  const navigate = useNavigate();
   const statusApp = useSelector(selectAppStatus);
+
   const [activeAddNewCard, setActiveAddNewCard] = useState(false);
 
   const addNewCardsHandler = () => {

@@ -1,12 +1,11 @@
-import * as React from "react";
 import s from "./header.module.css";
 import { useNavigate } from "react-router-dom";
-import { SuperButton } from "../../common/components/superButton/superButton";
-import { useAppDispatch } from "../../app/store";
-import { toggleIsSignUp } from "../../app/appReducer";
+import { SuperButton } from "common/components";
+import { useAppDispatch } from "app/store";
+import { toggleIsSignUp } from "app/appReducer";
 import { useSelector } from "react-redux";
-import PATH from "../../common/constans/path/path";
-import { selectorAuth } from "../../app/appSelectors";
+import { PATH } from "common/constans";
+import { selectorAuth } from "app/appSelectors";
 import { HeaderDropdown } from "./headerDropdown";
 
 export const Header = () => {

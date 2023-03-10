@@ -3,10 +3,10 @@ import { IconButton, TextField } from "@mui/material";
 import s from "./actionModal.module.css";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { addPackTC, editPackTC } from "../packs/packsReducer";
+import { addPackTC } from "../packs/packsReducer";
 import { useAppDispatch } from "../../app/store";
 import { ModalButtons } from "./modalButtons";
-//import { ActivateModalPropsType } from "../../feature/packs/packs";
+
 import { useParams } from "react-router-dom";
 
 import AddImage from "../../common/img/AddImage.png";

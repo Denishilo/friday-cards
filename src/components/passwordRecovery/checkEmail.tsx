@@ -1,15 +1,17 @@
 import React from "react";
 import s from "./password.module.css";
-import PATH from "../../common/constans/path/path";
-import messageIcon from "../../common/img/MessageIcon.svg";
-import { SuperButton } from "../../common/components/superButton/superButton";
+import { PATH } from "common/constans";
+import messageIcon from "common/img/MessageIcon.svg";
+import { SuperButton } from "common/components";
 import { useNavigate } from "react-router-dom";
 
 export const CheckEmail = () => {
   const navigate = useNavigate();
+
   const onClickHandler = () => {
     return navigate(PATH.LOGIN);
   };
+
   return (
     <div className={s.wrapper}>
       <div className={s.title}>Check Email</div>

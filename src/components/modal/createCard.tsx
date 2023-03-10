@@ -5,15 +5,12 @@ import { SelectQuestion } from "./selectQuestion";
 import { ModalButtons } from "./modalButtons";
 import { useAppDispatch } from "../../app/store";
 import { addNewCardTC, editCardTC } from "../cards/cardsReducer";
-import { useNavigate } from "react-router-dom";
 import { ActivateModalPropsType } from "./addNewPackModal";
-import { EditCardRequestType, NewCardRequestType } from "../cards/cardsAPI";
-import PATH from "../../common/constans/path/path";
+import { EditCardRequestType } from "../cards/cardsAPI";
 import Button from "@mui/material/Button";
 import { convertFileToBase64 } from "../profile/badgeAvatar";
 
 export const CreateCard = (props: CreateNewCardPropsType) => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");

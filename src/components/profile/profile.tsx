@@ -5,17 +5,19 @@ import React, { useCallback } from "react";
 import EditableSpan from "./editableSpan";
 import { useAppDispatch } from "../../app/store";
 import { logoutUser } from "../loginRegistration/authReducer";
-import { Navigate, useNavigate } from "react-router-dom";
-import { ReturnBack } from "../../common/components/returnBack/returnBack";
+import { useNavigate } from "react-router-dom";
+import { ReturnBack } from "common/components";
 import s from "./profile.module.css";
-import PATH from "../../common/constans/path/path";
+import { PATH } from "common/constans";
 import { useSelector } from "react-redux";
 import { selectUserAvatar, selectUserEmail, selectUserName } from "./profileSelectors";
 import { BadgeAvatar } from "./badgeAvatar";
+import { buttonSX } from "./styleMU";
 
 export const Profile = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
   const userAvatar = useSelector(selectUserAvatar);
@@ -44,17 +46,7 @@ export const Profile = () => {
                 type={"submit"}
                 variant={"contained"}
                 onClick={logOutHandler}
-                sx={{
-                  color: "black",
-                  backgroundColor: "white",
-                  borderRadius: "30px",
-                  textTransform: "none",
-                  width: 127,
-                  height: 36,
-                  "&:hover": {
-                    backgroundColor: "transparent",
-                  },
-                }}
+                sx={buttonSX}
                 startIcon={<img src={arrowIcon} style={{ width: 30, height: 30 }} alt="icon" />}
               >
                 Log out

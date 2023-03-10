@@ -1,7 +1,7 @@
 import { PacksTable } from "./packsTable/packsTable";
 import React, { useState } from "react";
 import s from "./packs.module.css";
-import { TitleWithButton } from "../../common/components/titleWithButton/titleWithButton";
+import { TitleWithButton } from "common/components/titleWithButton/titleWithButton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AddNewPackModal } from "../modal/addNewPackModal";
 import { SettingsParams } from "../settingParams/settingsParams";

@@ -1,15 +1,14 @@
-import PATH from "../../../common/constans/path/path";
+import { PATH } from "common/constans/path/path";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { DataRows } from "./packsTable";
-import { useAppDispatch } from "../../../app/store";
-import { setCurrentPackId } from "../../../app/appReducer";
+import { useAppDispatch } from "app/store";
+import { setCurrentPackId } from "app/appReducer";
 import s from "../packs.module.css";
-import EmptyImage from "../../../common/img/EmptyImage.png";
-import BrokenImage from "../../../common/img/BrokenImage.png";
+import EmptyImage from "common/img/EmptyImage.png";
+import BrokenImage from "common/img/BrokenImage.png";
 
 export const PacksTableBody = ({ rows }: PropsType) => {
   const navigate = useNavigate();

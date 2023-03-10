@@ -1,9 +1,9 @@
-import { appAPI } from "../../app/appAPI";
-import { AppThunkDispatch } from "../../app/store";
+import { appAPI } from "app/appAPI";
+import { AppThunkDispatch } from "app/store";
 import { AxiosError } from "axios";
-import { errorUtils } from "../../common/functions/utils/errorUtils/errorUtils";
-import { setAppStatus } from "../../app/appReducer";
-import PATH from "../../common/constans/path/path";
+import { errorUtils } from "common/functions/utils/errorUtils/errorUtils";
+import { setAppStatus } from "app/appReducer";
+import { PATH } from "common/constans";
 
 const initialState = {
   isNewPasswordSet: false,

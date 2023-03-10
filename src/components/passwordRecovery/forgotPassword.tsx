@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useState } from "react";
 import { TextField } from "@mui/material";
 import s from "./password.module.css";
-import { useAppDispatch } from "../../app/store";
+import { useAppDispatch } from "app/store";
 import { recoveryPasswordTC } from "./forgotPasswordReducer";
-import { SuperButton } from "../../common/components/superButton/superButton";
+import { SuperButton } from "common/components";
 import { NavLink, useNavigate } from "react-router-dom";
-import PATH from "../../common/constans/path/path";
+import { PATH } from "common/constans";
 
 export const ForgotPassword = () => {
   const dispatch = useAppDispatch();

@@ -1,21 +1,11 @@
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import s from "./actionsIconPack.module.css";
 import React, { useState } from "react";
-import { selectorIdUser } from "../../loginRegistration/authSelectors";
 import { useSelector } from "react-redux";
+import s from "./actionsIconPack.module.css";
+import { selectorIdUser } from "../../loginRegistration/authSelectors";
 import { DeleteCardModal } from "../../modal/deleteCardModal";
 import { EditCardModal } from "../../modal/editCardModal";
-
-type ActionsIconPackType = {
-  user_id: string;
-  questionTitle: string;
-  card_id: string;
-  pack_id: string;
-  answer: string;
-  questionImg: string;
-  answerImg: string;
-};
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 export const CardsActionsIconPack = (props: ActionsIconPackType) => {
   const userAuthId = useSelector(selectorIdUser);
@@ -31,6 +21,7 @@ export const CardsActionsIconPack = (props: ActionsIconPackType) => {
     setOpenDeleteModalCard(true);
   };
   const questionFormat = !props.answerImg ? "Text" : "Img";
+
   return (
     <div className={s.wrapper}>
       <span onClick={editPackCallback}>{props.user_id === userAuthId ? <BorderColorOutlinedIcon /> : null}</span>
@@ -55,4 +46,15 @@ export const CardsActionsIconPack = (props: ActionsIconPackType) => {
       />
     </div>
   );
+};
+
+/////////////types ///////////////
+type ActionsIconPackType = {
+  user_id: string;
+  questionTitle: string;
+  card_id: string;
+  pack_id: string;
+  answer: string;
+  questionImg: string;
+  answerImg: string;
 };

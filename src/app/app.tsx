@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { Header } from "../components/header/header";
-import { ErrorSnackbar } from "../common/components/errorSnackbar/errorSnackbar";
-import { authMe } from "../components/loginRegistration/authReducer";
+import { useSelector } from "react-redux";
+import { Header } from "components/header";
 import { useAppDispatch } from "./store";
 import { Pages } from "./routes";
-import { useSelector } from "react-redux";
+import { ErrorSnackbar } from "common/components";
 import { isInitialized } from "./appSelectors";
-import { InitializedLoader } from "../common/components/loaders/initializedLoader/InitializedLoader";
+import { InitializedLoader } from "common/components";
+import { authMe } from "components/loginRegistration/authReducer";
 
 const App = () => {
   const dispatch = useAppDispatch();

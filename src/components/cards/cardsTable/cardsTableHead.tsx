@@ -2,12 +2,12 @@ import React from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import { headCellsCards } from "../../../common/constans/table";
+import { headCellsCards } from "common/constans";
 import s from "../cards.module.css";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Box from "@mui/material/Box";
 import { visuallyHidden } from "@mui/utils";
-import { useAppDispatch } from "../../../app/store";
+import { useAppDispatch } from "app/store";
 import { Order, SortPropsType } from "../../packs/packsTable/packsTableHead";
 import { getCardsTC } from "../cardsReducer";
 
@@ -24,7 +24,6 @@ export const CardsTableHead = ({ orderRef, urlParams, orderBy, setOrderBy }: Sor
       cellName = "updated";
     }
     if (order === "asc") {
-      console.log("URL PAR 2", urlParams.cardsPack_id);
       orderRef.current = "desc";
       params = { cardsPack_id: urlParams.cardsPack_id, sortCards: `0${cellName}`, pageCount: urlParams.pageCount };
     }
@@ -32,7 +31,6 @@ export const CardsTableHead = ({ orderRef, urlParams, orderBy, setOrderBy }: Sor
       orderRef.current = "asc";
       params = { cardsPack_id: urlParams.cardsPack_id, sortCards: `1${cellName}`, pageCount: urlParams.pageCount };
     }
-    console.log(params, "PARAMS");
     dispatch(getCardsTC(params));
   };
 

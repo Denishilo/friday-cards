@@ -1,4 +1,3 @@
-import * as React from "react";
 import s from "./learnCardPack.module.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -16,24 +15,23 @@ import { useAppDispatch } from "../../../app/store";
 import { useEffect, useState } from "react";
 import { getCardsTC, updateGradeCardTC } from "../cardsReducer";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { SuperButton } from "../../../common/components/superButton/superButton";
-import { ReturnBack } from "../../../common/components/returnBack/returnBack";
-import PATH from "../../../common/constans/path/path";
-import { selectAppStatus, selectorAuth } from "../../../app/appSelectors";
-import { generateRandomQuestion } from "../../../common/functions/smartRandom/generateRandomQuestion";
+import { SuperButton } from "common/components";
+import { ReturnBack } from "common/components";
+import { PATH } from "common/constans";
+import { selectAppStatus } from "app/appSelectors";
+import { generateRandomQuestion } from "common/functions/smartRandom/generateRandomQuestion";
 import { CardParamsType, UpdateGradeCardType } from "../cardsAPI";
 import { selectorMax } from "../../packs/packsSelectors";
-import { SkeletonLoader } from "../../../common/components/loaders/skeletonLoader/skeletonLoader";
+import { SkeletonLoader } from "common/components";
 
 export const LearnCardPack = () => {
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  //const URLParams = Object.fromEntries(searchParams);
 
   const packId = searchParams.get("cardsPack_id") || "";
   const cards = useSelector(selectorCards);
-  //const isAuth = useSelector(selectorAuth);
+
   const cardsPackName = useSelector(selectorPackName);
   const maxValueCards = useSelector(selectorMax);
   const statusApp = useSelector(selectAppStatus);

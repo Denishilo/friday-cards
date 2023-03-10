@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,11 +8,9 @@ import s from "./header.module.css";
 import Avatar from "@mui/material/Avatar";
 import { useSelector } from "react-redux";
 import { selectUserAvatar, selectUserName } from "../profile/profileSelectors";
-import { useCallback, useState } from "react";
 import { logoutUser } from "../loginRegistration/authReducer";
-import { useAppDispatch } from "../../app/store";
-import PATH from "../../common/constans/path/path";
-import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "app/store";
+import { PATH } from "common/constans";
 import profileUserLogo from "./img/profileUserLogo.png";
 import arrowIcon from "../profile/img/logOutArrow.png";
 

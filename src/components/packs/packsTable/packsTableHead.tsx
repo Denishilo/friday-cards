@@ -2,10 +2,10 @@ import React, { MutableRefObject, useRef } from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import { headCells } from "../../../common/constans/table";
+import { headCells } from "common/constans/table";
 import s from "../packs.module.css";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import { useAppDispatch } from "../../../app/store";
+import { useAppDispatch } from "app/store";
 import { visuallyHidden } from "@mui/utils";
 import Box from "@mui/material/Box";
 import { fetchPacksTC } from "../packsReducer";
@@ -37,7 +37,6 @@ export const PacksTableHead = ({ orderRef, urlParams, orderBy, setOrderBy }: Sor
         : { sortPacks: `1${cellName}` };
     }
     dispatch(fetchPacksTC(params));
-    console.log(params);
   };
 
   return (

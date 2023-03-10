@@ -1,19 +1,18 @@
 import s from "./packs.module.css";
-import { ReturnBack } from "../../common/components/returnBack/returnBack";
-import PATH from "../../common/constans/path/path";
-import { useAppDispatch } from "../../app/store";
+import { ReturnBack } from "common/components";
+import { PATH } from "common/constans";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectorPackName, selectorPackUserId } from "../cards/cardsSelectors";
-import { SuperButton } from "../../common/components/superButton/superButton";
-import { selectAppStatus, selectorPackId, selectorUserId } from "../../app/appSelectors";
+import { SuperButton } from "common/components";
+import { selectAppStatus, selectorPackId, selectorUserId } from "app/appSelectors";
 import Skeleton from "react-loading-skeleton";
 import { useState } from "react";
 import { AddNewCardModal } from "../modal/addNewCardModal";
 
 export const EmptyPageField = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+
   const packName = useSelector(selectorPackName);
   const packId = useSelector(selectorPackId);
   const statusApp = useSelector(selectAppStatus);
@@ -23,6 +22,7 @@ export const EmptyPageField = () => {
   const [activeAddNewCard, setActiveAddNewCard] = useState(false);
 
   const isUserCardPack = userAuthId === userPackId;
+
   const returnToPackHandler = () => {
     navigate(PATH.PACKS);
   };
@@ -34,6 +34,7 @@ export const EmptyPageField = () => {
   const addNewPackModalHandler = async () => {
     setActiveAddNewCard(true);
   };
+
   return (
     <div className={s.emptyPageWrapper}>
       <ReturnBack callback={returnToPackHandler} />

@@ -3,12 +3,12 @@ import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import s from "./settingParams.module.css";
 import { ChangeEvent, FC, useEffect, useState } from "react";
-import { useAppDispatch } from "../../app/store";
+import { useAppDispatch } from "app/store";
 import { setSearchFieldEmpty } from "../packs/packsReducer";
 import { useSelector } from "react-redux";
 import { selectorIsClearSearchField } from "../packs/packsSelectors";
 import { useSearchParams } from "react-router-dom";
-import { useDebounce } from "../../common/functions/useDebounce";
+import { useDebounce } from "common/functions/useDebounce";
 
 const Search = styled("div")(({ theme }) => ({
   border: "solid 1px #DEDBDC",

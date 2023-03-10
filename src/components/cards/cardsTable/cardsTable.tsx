@@ -1,23 +1,26 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
-import { useSelector } from "react-redux";
 import { selectorCards } from "../cardsSelectors";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { CardsActionsIconPack } from "../actionIcon/cardsActionsIconPack";
 import { CardsTableHead } from "./cardsTableHead";
 import { CardsTableBody } from "./cardsTableBody";
 import { CardsTablePagination } from "./cardsTablePagination";
-import { useAppDispatch } from "../../../app/store";
+import { useAppDispatch } from "app/store";
 import { getCardsTC } from "../cardsReducer";
-import { selectAppStatus } from "../../../app/appSelectors";
-import PATH from "../../../common/constans/path/path";
-import { SkeletonLoader } from "../../../common/components/loaders/skeletonLoader/skeletonLoader";
+import { selectAppStatus } from "app/appSelectors";
+import { PATH } from "../../../common/constans";
+import { SkeletonLoader } from "common/components";
 import { CardsType } from "../cardsAPI";
 import { Order } from "../../packs/packsTable/packsTableHead";
 import { NotFoundPage } from "../../packs/notFoundPage";
 
 export const CardsList = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries(searchParams);
   const searchCardQuestion = searchParams.get("cardQuestion");
@@ -26,9 +29,8 @@ export const CardsList = () => {
   const cards = useSelector(selectorCards);
   const isCardsEmpty = cards.length === 0;
   const status = useSelector(selectAppStatus);
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const statusApp = useSelector(selectAppStatus);
+
   const [orderBy, setOrderBy] = React.useState<string>("grade");
   const orderRef = useRef<Order>("asc");
 

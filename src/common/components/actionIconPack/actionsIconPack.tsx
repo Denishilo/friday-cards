@@ -1,14 +1,14 @@
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import s from "./actionsIconPack.module.css";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectorIdUser } from "../../../components/loginRegistration/authSelectors";
-import { EditPackModal } from "../../../components/modal/editPackModal";
-import { DeletePackModal } from "../../../components/modal/deletePackModal";
-import PATH from "../../constans/path/path";
-import { useNavigate } from "react-router-dom";
+import { selectorIdUser } from "components/loginRegistration/authSelectors";
+import { EditPackModal } from "components/modal/editPackModal";
+import { DeletePackModal } from "components/modal/deletePackModal";
+import { PATH } from "../../constans";
 
 type ActionsIconPackType = {
   pack_id: string;

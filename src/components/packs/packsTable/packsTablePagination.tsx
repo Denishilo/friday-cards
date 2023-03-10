@@ -7,7 +7,9 @@ import { useSearchParams } from "react-router-dom";
 export const PacksTablePagination = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries(searchParams);
+
   const totalPacksCount = useSelector(selectorPacksTotalCount) || 10;
+
   const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(Number(searchParams.get("pageCount")) || 4);
 

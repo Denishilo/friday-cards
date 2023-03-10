@@ -12,17 +12,18 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React, { useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/store";
-import { toggleIsSignUp } from "../../app/appReducer";
+import { useAppDispatch } from "app/store";
+import { toggleIsSignUp } from "app/appReducer";
 import { loginUser, registrationUser } from "./authReducer";
-import { SuperButton } from "../../common/components/superButton/superButton";
-import PATH from "../../common/constans/path/path";
+import { SuperButton } from "common/components";
+import { PATH } from "common/constans";
 import { useSelector } from "react-redux";
-import { selectorAuth, selectorSignUp } from "../../app/appSelectors";
+import { selectorAuth, selectorSignUp } from "app/appSelectors";
 
 export const LoginRegistration = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const isSignUp = useSelector(selectorSignUp);
   const isAuth = useSelector(selectorAuth);
 

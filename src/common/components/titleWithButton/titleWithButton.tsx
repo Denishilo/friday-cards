@@ -1,13 +1,13 @@
-import s from "./TitleWithButton.module.css";
-import { SuperButton } from "../superButton/superButton";
 import React from "react";
-import PATH from "../../constans/path/path";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectorUserId } from "../../../app/appSelectors";
-import { selectorPackName, selectorPackUserId } from "../../../components/cards/cardsSelectors";
-import { TitleDropdown } from "./titleDropdown";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import s from "./TitleWithButton.module.css";
 import learnIcon from "../../img/learnIcon.svg";
+import { TitleDropdown } from "./titleDropdown";
+import { SuperButton } from "../superButton/superButton";
+import { PATH } from "../../constans";
+import { selectorUserId } from "app/appSelectors";
+import { selectorPackName, selectorPackUserId } from "components/cards/cardsSelectors";
 
 export const TitleWithButton = (props: TitleWithButtonPropsType) => {
   const { title, nameButton, callback } = props;

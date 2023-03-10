@@ -1,4 +1,4 @@
-import { ReturnBack } from "../../common/components/returnBack/returnBack";
+import { ReturnBack } from "common/components";
 import s from "./packs.module.css";
 import React, { FC } from "react";
 

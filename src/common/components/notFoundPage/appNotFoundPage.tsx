@@ -2,10 +2,10 @@ import React from "react";
 import notFoundPageImg from "../../img/notFoundPage.png";
 import s from "./appNotFoundPage.module.css";
 import { useNavigate } from "react-router-dom";
-import PATH from "../../constans/path/path";
+import { PATH } from "../../constans";
 import { SuperButton } from "../superButton/superButton";
 
-const AppNotFoundPage = () => {
+export const AppNotFoundPage = () => {
   const navigate = useNavigate();
   const returnToPackHandler = () => {
     navigate(PATH.PACKS);
@@ -22,5 +22,3 @@ const AppNotFoundPage = () => {
     </div>
   );
 };
-
-export default AppNotFoundPage;

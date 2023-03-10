@@ -3,9 +3,8 @@ import TableCell from "@mui/material/TableCell";
 import Box from "@mui/material/Box";
 import { Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import s from "../cards.module.css";
 import TableBody from "@mui/material/TableBody";
-import React from "react";
+import s from "../cards.module.css";
 import { DataCards } from "./cardsTable";
 
 export const CardsTableBody = ({ rows }: PropsType) => {

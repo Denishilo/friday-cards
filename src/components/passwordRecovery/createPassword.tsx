@@ -3,10 +3,10 @@ import { FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui
 import s from "./password.module.css";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { changePasswordTC } from "./forgotPasswordReducer";
-import { SuperButton } from "../../common/components/superButton/superButton";
-import { useAppDispatch } from "../../app/store";
+import { SuperButton } from "common/components";
+import { useAppDispatch } from "app/store";
 import { useNavigate } from "react-router-dom";
-import PATH from "../../common/constans/path/path";
+import { PATH } from "common/constans/path/path";
 
 export const CreatePassword = () => {
   const dispatch = useAppDispatch();

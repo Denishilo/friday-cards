@@ -1,26 +1,23 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { useState } from "react";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ArrowDropDownCircleOutlinedIcon from "@mui/icons-material/ArrowDropDownCircleOutlined";
-import { EditPackModal } from "../../../components/modal/editPackModal";
-import { DeletePackModal } from "../../../components/modal/deletePackModal";
+import { EditPackModal } from "components/modal/editPackModal";
+import { DeletePackModal } from "components/modal/deletePackModal";
 
-type PropsType = {
-  pack_id: any;
-  pack_name: any;
-};
 export const TitleDropdown = ({ pack_id, pack_name }: PropsType) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [activeEditPack, setActiveEditPack] = useState(false);
   const [activeDeletePack, setActiveDeletePack] = useState(false);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const editPackModalHandler = () => {
     setActiveEditPack(true);
   };
@@ -28,6 +25,7 @@ export const TitleDropdown = ({ pack_id, pack_name }: PropsType) => {
   const deletePackModalHandler = () => {
     setActiveDeletePack(true);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -70,4 +68,10 @@ export const TitleDropdown = ({ pack_id, pack_name }: PropsType) => {
       </Menu>
     </div>
   );
+};
+
+///////////////types//////////////
+type PropsType = {
+  pack_id: any;
+  pack_name: any;
 };
