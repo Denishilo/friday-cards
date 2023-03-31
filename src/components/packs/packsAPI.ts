@@ -12,7 +12,7 @@ export const packsAPI = {
     return instanceHeroku.delete(`/cards/pack?id=${id}`);
   },
   editPack(editCardPack: EditCardPackRequestType) {
-    return instanceHeroku.put(`/cards/pack`, editCardPack);
+    return instanceHeroku.put<PackResponseType>(`/cards/pack`, editCardPack);
   },
 };
 

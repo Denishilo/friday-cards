@@ -15,10 +15,10 @@ export const authAPI = {
     return instanceHeroku.delete<LogOutResponse>("/auth/me");
   },
   updateUserName(name: string) {
-    return instanceHeroku.put<ResponseUpdateUserNameAvatar>("/auth/me", { name });
+    return instanceHeroku.put<ResponseUpdateUser>("/auth/me", { name });
   },
   updateUserAvatar(avatar: string) {
-    return instanceHeroku.put<ResponseUpdateUserNameAvatar>("/auth/me", { avatar });
+    return instanceHeroku.put<ResponseUpdateUser>("/auth/me", { avatar });
   },
 };
 ////////////////////////// types /////////////////////////////
@@ -43,7 +43,7 @@ type LogOutResponse = {
   error: string;
 };
 
-type ResponseUpdateUserNameAvatar = {
+type ResponseUpdateUser = {
   updatedUser: UserDataType;
   error?: string;
 };

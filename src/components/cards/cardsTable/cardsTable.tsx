@@ -27,7 +27,7 @@ export const CardsList = () => {
   const searchCardsPackId = searchParams.get("cardsPack_id") || "";
 
   const cards = useSelector(selectorCards);
-  const isCardsEmpty = cards.length === 0;
+  const isCardsEmpty = cards?.length === 0;
   const status = useSelector(selectAppStatus);
   const statusApp = useSelector(selectAppStatus);
 

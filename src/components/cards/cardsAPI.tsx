@@ -8,13 +8,13 @@ export const cardsAPI = {
     return instanceHeroku.put<GradeResponseType>("cards/grade", newGradeCard);
   },
   addCard(newCard: NewCardRequestType) {
-    return instanceHeroku.post("cards/card", newCard);
+    return instanceHeroku.post<CardResponseType>("cards/card", newCard);
   },
   deleteCard(id: string) {
     return instanceHeroku.delete(`cards/card?id=${id}`);
   },
   editCard(editCard: EditCardRequestType) {
-    return instanceHeroku.put(`cards/card`, editCard);
+    return instanceHeroku.put<CardResponseType>(`cards/card`, editCard);
   },
 };
 

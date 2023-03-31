@@ -3,15 +3,14 @@ import { IconButton, TextField } from "@mui/material";
 import s from "./actionModal.module.css";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { addPackTC } from "../packs/packsReducer";
+import { addPackTC, editPackTC } from "../packs/packsReducer";
 import { useAppDispatch } from "../../app/store";
 import { ModalButtons } from "./modalButtons";
-
 import { useParams } from "react-router-dom";
-
 import AddImage from "../../common/img/AddImage.png";
 import { convertFileToBase64 } from "../../common/functions/convertFileToBase64";
 import { ActivateModalPropsType } from "./addNewPackModal";
+import { EditCardPackRequestType } from "../packs/packsAPI";
 
 export const EditPack = (props: EditPackPropsType) => {
   const { id } = useParams();
@@ -52,12 +51,15 @@ export const EditPack = (props: EditPackPropsType) => {
     if (props.pack_id && packName && packName.trim() !== "") {
       setError("");
       setDisabled(true);
-
-      //await dispatch(editPackTC(props.pack_id, packName, imageDeckCover));
+      const editPack: EditCardPackRequestType = {
+        cardsPack: {
+          _id: props.pack_id,
+          name: packName,
+          deckCover: imageDeckCover,
+        },
+      };
+      await dispatch(editPackTC(editPack));
       setDisabled(false);
-      if (id) {
-        //await dispatch(getAllUserCards(id));
-      }
       props.setActive(false);
     } else {
       setError("Title is required");
@@ -71,9 +73,6 @@ export const EditPack = (props: EditPackPropsType) => {
       if (file.size < 4000000) {
         convertFileToBase64(file, (file64: string) => {
           setImageDeckCover(file64);
-          console.log(file64);
-          // setAvatar("111");
-          // dispatch(updateUserAvatar(file64));
         });
       } else {
         console.error("Error: ", "Файл слишком большого размера");
@@ -116,7 +115,6 @@ export const EditPack = (props: EditPackPropsType) => {
         active={props.active}
         disabled={disabled}
         setActive={props.setActive}
-        // changeName={() => changeName}
         onKeyDownSaveChangeNameHandler={props.pack_id ? saveChangePackName : addNewPackName}
       />
     </div>
@@ -130,5 +128,3 @@ type PropsType = {
   pack_name: string;
   deckCover?: string;
 };
-
-export default {};

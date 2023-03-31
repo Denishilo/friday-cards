@@ -9,9 +9,12 @@ import { ActivateModalPropsType } from "./addNewPackModal";
 import { EditCardRequestType } from "../cards/cardsAPI";
 import Button from "@mui/material/Button";
 import { convertFileToBase64 } from "../profile/badgeAvatar";
+import { PATH } from "../../common/constans";
+import { useNavigate } from "react-router-dom";
 
 export const CreateCard = (props: CreateNewCardPropsType) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
   const [disabled, setDisabled] = useState(false);
@@ -33,38 +36,11 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
   };
   const setFileFormatHandler = (fileFormat: string) => setFileFormat(fileFormat);
 
-  // const addNewCardd = async () => {
-  //   if (props.pack_id) {
-  //     setDisabled(true);
-  //     const newCard: NewCardRequestType = {
-  //       card: {
-  //         cardsPack_id: props.pack_id,
-  //         question,
-  //         answer,
-  //       },
-  //     };
-  //     await dispatch(addNewCardTC(newCard));
-  //     setDisabled(false);
-  //     props.setActive(false);
-  //   }
-  // };
   const addNewCard = async () => {
-    if (props.pack_id && question.trim() !== "" && answer.trim() !== "") {
-      setDisabled(true);
-      const params = {
-        card: {
-          cardsPack_id: props.pack_id,
-          question,
-          answer,
-        },
-      };
-      await dispatch(addNewCardTC(params));
-      setDisabled(false);
-      props.setActive(false);
-      //navigate(`${PATH.CARDS_LIST}${props.pack_id}`);
-      console.log("navigate", props.pack_id);
-    }
-    if (props.pack_id && questionImg.trim() !== "" && answerImg.trim() !== "") {
+    if (
+      (props.pack_id && question.trim() !== "" && answer.trim() !== "") ||
+      (props.pack_id && questionImg.trim() !== "" && answerImg.trim() !== "")
+    ) {
       setDisabled(true);
       const params = {
         card: {
@@ -75,10 +51,11 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
           questionImg,
         },
       };
+
       await dispatch(addNewCardTC(params));
       setDisabled(false);
       props.setActive(false);
-      //navigate(`${PATH.CARDS_LIST}${props.pack_id}`);
+      navigate(`${PATH.CARDS_LIST}?cardsPack_id=${props.pack_id}`);
     }
     if (question.trim() === "") {
       setErrorQuestion("Question is required");
@@ -87,14 +64,13 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
       setErrorAnswer("Answer is required");
     }
   };
-  console.log(answerImg);
 
-  const uploadQuestionImgHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const uploadHandler = (e: any, type: string) => {
     if (e.target.files && e.target.files.length) {
       const file = e.target.files[0];
       if (file.size < 4000000) {
         convertFileToBase64(file, (file64: string) => {
-          setQuestionImg(file64);
+          type === "question" ? setQuestionImg(file64) : setAnswerImg(file64);
         });
       } else {
         console.error("Error: ", "Файл слишком большого размера");
@@ -102,18 +78,26 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
     }
   };
 
-  const uploadAnswerImgHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length) {
-      const file = e.target.files[0];
-      if (file.size < 4000000) {
-        convertFileToBase64(file, (file64: string) => {
-          setAnswerImg(file64);
-        });
-      } else {
-        console.error("Error: ", "Файл слишком большого размера");
-      }
-    }
+  const uploadQuestionHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    uploadHandler(e, "question");
   };
+
+  const uploadAnswerHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    uploadHandler(e, "answer");
+  };
+
+  // const uploadAnswerImgHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files.length) {
+  //     const file = e.target.files[0];
+  //     if (file.size < 4000000) {
+  //       convertFileToBase64(file, (file64: string) => {
+  //         setAnswerImg(file64);
+  //       });
+  //     } else {
+  //       console.error("Error: ", "Файл слишком большого размера");
+  //     }
+  //   }
+  // };
 
   const editCard = async () => {
     if (props.card_id && props.pack_id) {
@@ -179,12 +163,7 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
               <div>
                 <img className={s.questionImg} src={questionImg || undefined} />
                 <label className={s.uploadButtons}>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={uploadQuestionImgHandler}
-                    className={s.invisibleInput}
-                  />
+                  <input type="file" accept="image/*" onChange={uploadQuestionHandler} className={s.invisibleInput} />
                   <Button variant="contained" component="span">
                     Upload question
                   </Button>
@@ -193,7 +172,7 @@ export const CreateCard = (props: CreateNewCardPropsType) => {
               <div>
                 <img className={s.answerImg} src={answerImg || undefined} />
                 <label className={s.uploadButtons}>
-                  <input type="file" accept="image/*" onChange={uploadAnswerImgHandler} className={s.invisibleInput} />
+                  <input type="file" accept="image/*" onChange={uploadAnswerHandler} className={s.invisibleInput} />
                   <Button sx={{ marginTop: 3 }} variant="contained" component="span">
                     Upload answer
                   </Button>

@@ -17,10 +17,10 @@ export const EditPackModal = (props: EditPackModalPropsType) => {
   );
 };
 
-type PackIdType = {
+export type PackEditType = {
   pack_id: string;
   pack_name: string;
   deckCover?: string;
 };
 
-type EditPackModalPropsType = ActivateModalPropsType & PackIdType;
+type EditPackModalPropsType = ActivateModalPropsType & PackEditType;
