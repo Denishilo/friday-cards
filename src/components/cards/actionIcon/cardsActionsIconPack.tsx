@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
 import s from "./actionsIconPack.module.css";
 import { selectorIdUser } from "../../loginRegistration/authSelectors";
@@ -7,7 +7,8 @@ import { EditCardModal } from "../../modal/editCardModal";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
-export const CardsActionsIconPack = (props: ActionsIconPackType) => {
+export const CardsActionsIconPack: FC<Props> = (props) => {
+  const { answerImg, user_id, questionTitle, card_id, pack_id, answer } = props;
   const userAuthId = useSelector(selectorIdUser);
 
   const [openDeleteModalCard, setOpenDeleteModalCard] = useState(false);
@@ -20,36 +21,36 @@ export const CardsActionsIconPack = (props: ActionsIconPackType) => {
   const deletePackCallback = () => {
     setOpenDeleteModalCard(true);
   };
-  const questionFormat = !props.answerImg ? "Text" : "Img";
+  const questionFormat = answerImg ? "Text" : "Img";
 
   return (
     <div className={s.wrapper}>
-      <span onClick={editPackCallback}>{props.user_id === userAuthId ? <BorderColorOutlinedIcon /> : null}</span>
+      <span onClick={editPackCallback}>{user_id === userAuthId ? <BorderColorOutlinedIcon /> : null}</span>
       <span className={s.deleteButton} onClick={deletePackCallback}>
-        {props.user_id === userAuthId ? <DeleteOutlinedIcon /> : null}
+        {user_id === userAuthId ? <DeleteOutlinedIcon /> : null}
       </span>
       <DeleteCardModal
         active={openDeleteModalCard}
         setActive={setOpenDeleteModalCard}
-        questionTitle={!props.answerImg ? props.questionTitle : "this card"}
-        card_id={props.card_id}
-        pack_id={props.pack_id}
+        questionTitle={!answerImg ? questionTitle : "this card"}
+        card_id={card_id}
+        pack_id={pack_id}
       />
       <EditCardModal
         active={openEditModalCard}
         setActive={setOpenEditModalCard}
-        questionTitle={props.questionTitle}
+        questionTitle={questionTitle}
         questionFormat={questionFormat}
-        answer={props.answer}
-        pack_id={props.pack_id}
-        card_id={props.card_id}
+        answer={answer}
+        pack_id={pack_id}
+        card_id={card_id}
       />
     </div>
   );
 };
 
 /////////////types ///////////////
-type ActionsIconPackType = {
+type Props = {
   user_id: string;
   questionTitle: string;
   card_id: string;
