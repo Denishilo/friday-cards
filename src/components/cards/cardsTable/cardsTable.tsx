@@ -11,7 +11,7 @@ import { CardsTablePagination } from "./cardsTablePagination";
 import { useAppDispatch } from "app/store";
 import { getCardsTC } from "../cardsReducer";
 import { selectAppStatus } from "app/appSelectors";
-import { PATH } from "../../../common/constans";
+import { PATH } from "common/constans";
 import { SkeletonLoader } from "common/components";
 import { CardsType } from "../cardsAPI";
 import { Order } from "../../packs/packsTable/packsTableHead";

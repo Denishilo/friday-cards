@@ -1,4 +1,4 @@
-import { instanceHeroku } from "../../app/appAPI";
+import { instanceHeroku } from "app/appAPI";
 import { UserDataType } from "./authReducer";
 
 export const authAPI = {

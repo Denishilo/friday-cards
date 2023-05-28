@@ -1,7 +1,7 @@
-import { AppThunkDispatch } from "../../app/store";
-import { setAppStatus } from "../../app/appReducer";
+import { AppThunkDispatch } from "app/store";
+import { setAppStatus } from "app/appReducer";
 import { AxiosError } from "axios";
-import { errorUtils } from "../../common/functions/utils/errorUtils/errorUtils";
+import { errorUtils } from "common/functions/utils/errorUtils/errorUtils";
 import {
   CardParamsType,
   cardsAPI,
@@ -117,38 +117,3 @@ export const CardsActions = {
 } as const;
 
 export type CardsActionCreatorsType = ReturnType<typeof getCards>;
-
-// const initialCardsState = {
-//     cards: [],
-//     params: {
-//         cardAnswer: "",
-//         cardQuestion: "",
-//         cardsPack_id: "",
-//         min: 0,
-//         max: 0,
-//         sortCards: "0grade",
-//         page: 1,
-//         pageCount: 4,
-//     },
-//     cardsTotalCount: 0,
-//     maxGrade: 0,
-//     minGrade: 0,
-//     packCreated: '',
-//     packName: '',
-//     packPrivate: false,
-//     packUpdated: '',
-//     packUserId: '',
-//     page: 1,
-//     pageCount: 4,
-//     token: '',
-//     tokenDeathTime: '',
-// };
-// export type editCardType = {
-//     card: {
-//         _id: string;
-//         question: string;
-//         answer: string;
-//         answerImg?: string,
-//         questionImg?: string
-//     };
-// };

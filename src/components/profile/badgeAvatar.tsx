@@ -7,7 +7,7 @@ import smallPhotoIcon from "./img/smallPhotoIcon.png";
 import { IconButton } from "@mui/material";
 import s from "./profile.module.css";
 import defaultAvatar from "./img/defaultAvatar.png";
-import { useAppDispatch } from "../../app/store";
+import { useAppDispatch } from "app/store";
 import { updateUserAvatar } from "../loginRegistration/authReducer";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -37,7 +37,6 @@ export const BadgeAvatar = (props: PropsType) => {
       if (file.size < 4000000) {
         convertFileToBase64(file, (file64: string) => {
           setAvatar(file64);
-          // setAvatar("111");
           dispatch(updateUserAvatar(file64));
         });
       } else {
@@ -75,7 +74,7 @@ export const BadgeAvatar = (props: PropsType) => {
     </Stack>
   );
 };
-
+/////////////// types ////////////////
 type PropsType = {
   userAvatar: string;
 };

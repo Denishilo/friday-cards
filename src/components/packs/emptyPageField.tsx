@@ -31,23 +31,16 @@ export const EmptyPageField = () => {
     setActiveAddNewCard(true);
   };
 
-  const addNewPackModalHandler = async () => {
-    setActiveAddNewCard(true);
-  };
-
   return (
     <div className={s.emptyPageWrapper}>
       <ReturnBack callback={returnToPackHandler} />
       <h3 className={s.titleEmptyPage}>{packName}</h3>
-
       {statusApp === "loading" ? (
         <Skeleton height={"60px"} count={5} background-color="#f3f3f3" foreground-color="#ecebeb" />
       ) : (
         <div className={s.textEmptyContainer}>
           {isUserCardPack ? <p>This pack is empty.Click add new card to fill this pack</p> : <p>This pack is empty.</p>}
           <div className={s.emptyPageButton}>
-            {/*{isUserCardPack && <SuperButton name={"Add new card"} callback={addNewCardHandler} />}*/}
-            {/*{isUserCardPack && <SuperButton name={"Add new card"} callback={addNewPackModalHandler} />}*/}
             {isUserCardPack && <SuperButton name={"Add new card"} callback={addNewCardsHandler} />}
           </div>
           <AddNewCardModal active={activeAddNewCard} setActive={setActiveAddNewCard} pack_id={packId} />
@@ -56,20 +49,3 @@ export const EmptyPageField = () => {
     </div>
   );
 };
-// return (
-//     <div className={s.emptyPageWrapper}>
-//       <ReturnBack callback={returnToPackHandler} />
-//       <h3 className={s.titleEmptyPage}>{packName}</h3>
-//       { isUserCardPack === true ?
-//           <div className={s.textEmptyContainer}>
-//             <p>This pack is empty.Click add new card to fill this pack</p>
-//             <div className={s.emptyPageButton}>
-//               <SuperButton name={"Add new card"} callback={addNewCardHandler} />
-//             </div>
-//           </div> :
-//           <div className={s.textEmptyContainer}>
-//             <p>This pack is empty.</p>
-//           </div>
-//       }
-//     </div>
-// );

@@ -19,13 +19,13 @@ export const CardsTableBody = ({ rows }: PropsType) => {
               scope="row"
               sx={{ paddingRight: "36px", textAlign: "left", width: "30%", flexWrap: "wrap", wordWrap: "break-word" }}
             >
-              <img className={s.cardsAnswerQuestionImg} src={row.questionImg || undefined} alt={"pic"} />
-              <div className={s.cardsField}>{row.questionImg ? null : row.question}</div>
+              {row.questionImg ? <img className={s.cardsAnswerQuestionImg} src={row.questionImg} alt={"pic"} /> : ""}
+              <div className={s.cardsField}>{row.questionImg ? "" : row.question}</div>
             </TableCell>
 
             <TableCell style={{ width: "30%", flexWrap: "wrap", wordWrap: "break-word" }} align="left">
-              <img className={s.cardsAnswerQuestionImg} src={row.answerImg || undefined} alt={"pic"} />
-              <div className={s.cardsField}>{row.answerImg ? null : row.answer}</div>
+              {row.answerImg ? <img className={s.cardsAnswerQuestionImg} src={row.answerImg} alt={"pic"} /> : ""}
+              <div className={s.cardsField}>{row.answerImg ? "" : row.answer}</div>
             </TableCell>
             <TableCell style={{ width: "18%", flexWrap: "wrap" }} align="left">
               {row.lastUpdated}

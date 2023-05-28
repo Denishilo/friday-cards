@@ -1,5 +1,5 @@
-import { DataRows } from "../../components/packs/packsTable/packsTable";
-import { DataCards } from "../../components/cards/cardsTable/cardsTable";
+import { DataRows } from "components/packs/packsTable/packsTable";
+import { DataCards } from "components/cards/cardsTable/cardsTable";
 
 export const headCells: readonly HeadCell[] = [
   {

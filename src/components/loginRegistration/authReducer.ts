@@ -1,8 +1,8 @@
-import { AppThunkDispatch } from "../../app/store";
+import { AppThunkDispatch } from "app/store";
 import { authAPI, LoginRequestType, RegistrationRequestType } from "./authAPI";
-import { setAppStatus, setAuth, setInitialized, toggleIsSignUp } from "../../app/appReducer";
+import { setAppStatus, setAuth, setInitialized, toggleIsSignUp } from "app/appReducer";
 import { AxiosError } from "axios";
-import { errorUtils } from "../../common/functions/utils/errorUtils/errorUtils";
+import { errorUtils } from "common/functions/utils/errorUtils/errorUtils";
 
 const initialAuthState = {
   isLogin: false,

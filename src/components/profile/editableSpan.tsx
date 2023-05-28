@@ -9,7 +9,7 @@ import React, {
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useAppDispatch } from "../../app/store";
+import { useAppDispatch } from "app/store";
 import { updateUserName } from "../loginRegistration/authReducer";
 import { useSelector } from "react-redux";
 import { selectUserName } from "./profileSelectors";

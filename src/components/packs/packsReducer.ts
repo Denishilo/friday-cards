@@ -1,7 +1,7 @@
-import { AppThunkDispatch } from "../../app/store";
-import { setAppStatus } from "../../app/appReducer";
+import { AppThunkDispatch } from "app/store";
+import { setAppStatus } from "app/appReducer";
 import { AxiosError } from "axios";
-import { errorUtils } from "../../common/functions/utils/errorUtils/errorUtils";
+import { errorUtils } from "common/functions/utils/errorUtils/errorUtils";
 import { AddPackParamsType, EditCardPackRequestType, PackResponseType, packsAPI, PacksReturnType } from "./packsAPI";
 
 const initialPacksState = {
