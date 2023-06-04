@@ -39,15 +39,12 @@ export const BadgeAvatar = (props: PropsType) => {
           setAvatar(file64);
           dispatch(updateUserAvatar(file64));
         });
-      } else {
-        console.error("Error: ", "Файл слишком большого размера");
       }
     }
   };
 
   const errorHandler = () => {
     setIsAvatarBroken(true);
-    alert("img is broken");
   };
 
   return (

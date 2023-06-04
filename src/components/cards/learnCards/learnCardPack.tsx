@@ -97,7 +97,7 @@ export const LearnCardPack = () => {
                 <b>Question:</b>
                 {cards ? (
                   cards[currentQuestion].questionImg ? (
-                    <img className={s.answerImg} src={cards[currentQuestion].questionImg || undefined} />
+                    <img className={s.answerImg} src={cards[currentQuestion].questionImg || undefined} alt={"pic"} />
                   ) : cards ? (
                     cards[currentQuestion].question
                   ) : (
@@ -118,7 +118,7 @@ export const LearnCardPack = () => {
                   <b>Answer:</b>
                   {cards ? (
                     cards[currentQuestion].answerImg ? (
-                      <img className={s.answerImg} src={cards[currentQuestion].answerImg || undefined} />
+                      <img className={s.answerImg} src={cards[currentQuestion].answerImg || undefined} alt={"pic"} />
                     ) : cards ? (
                       cards[currentQuestion].answer
                     ) : (

@@ -30,9 +30,9 @@ export const recoveryPasswordTC = (email: string) => async (dispatch: AppThunkDi
   dispatch(setAppStatus("loading"));
   const payload = {
     email: email,
-    from: `test-front-admin <ai73a@yandex.by>`,
-    message: `<div style="background-color: lime; padding: 15px"> 
-                password recovery link: <a href=http://localhost:3000${PATH.SET_NEW_PASSWORD}token>link</a>
+    from: `memorise support`,
+    message: `<div style="background-color: white; padding: 15px"> 
+                password recovery link: <a href=https://github.com/Denishilo${PATH.SET_NEW_PASSWORD}$token$>link</a>
                 </div>`,
   };
   try {
@@ -46,8 +46,6 @@ export const recoveryPasswordTC = (email: string) => async (dispatch: AppThunkDi
 };
 
 export const changePasswordTC = (password: string) => async (dispatch: AppThunkDispatch) => {
-  // const { token } = useParams<{ token: string }>();
-
   dispatch(setAppStatus("loading"));
   const URL = window.location.href;
   const resetPasswordToken = URL.replace(/^.*[\\\/]/, "");
