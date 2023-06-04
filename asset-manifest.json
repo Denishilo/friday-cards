@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/friday-cards/static/css/main.c4937bc5.css",
-    "main.js": "/friday-cards/static/js/main.5247dcd9.js",
+    "main.js": "/friday-cards/static/js/main.1790ff0d.js",
     "static/js/787.4d6bf454.chunk.js": "/friday-cards/static/js/787.4d6bf454.chunk.js",
     "static/media/notFoundPage.png": "/friday-cards/static/media/notFoundPage.5cffa140c5f7b7212a36.png",
     "static/media/defaultAvatar.png": "/friday-cards/static/media/defaultAvatar.e65ebbede86b57a721e1.png",
@@ -10,11 +10,11 @@
     "index.html": "/friday-cards/index.html",
     "static/media/learnIcon.svg": "/friday-cards/static/media/learnIcon.fef3ec6b30e64b0ba6a354c2f5eca6a0.svg",
     "main.c4937bc5.css.map": "/friday-cards/static/css/main.c4937bc5.css.map",
-    "main.5247dcd9.js.map": "/friday-cards/static/js/main.5247dcd9.js.map",
+    "main.1790ff0d.js.map": "/friday-cards/static/js/main.1790ff0d.js.map",
     "787.4d6bf454.chunk.js.map": "/friday-cards/static/js/787.4d6bf454.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c4937bc5.css",
-    "static/js/main.5247dcd9.js"
+    "static/js/main.1790ff0d.js"
   ]
 }
